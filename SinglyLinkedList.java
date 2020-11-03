@@ -1,5 +1,8 @@
 package com.jackie;
 
+/**
+* Implement Singly Linked List with head node and without a tail reference
+*/
 public class SinglyLinkedList<E> {
 
 	/* A node structure for the building of SinglyLinkedList */
@@ -7,7 +10,7 @@ public class SinglyLinkedList<E> {
 
 		/* Store the data value */
 		private E data;
-		/* Link of the next node in the list */
+		/* A reference of the next node in the list */
 		private Node<E> next;
 
 		/**
