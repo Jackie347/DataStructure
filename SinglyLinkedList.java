@@ -55,7 +55,7 @@ public class SinglyLinkedList<E> {
 	 */
 	private Node<E> getNode(int index) {
 		Node<E> p = head;
-		for (int i = -1; i < index && p != null; i++) {
+		for (int i = -1; i < index && p.next != null; i++) {
 			p = p.next;
 		}
 		return p;
@@ -114,7 +114,7 @@ public class SinglyLinkedList<E> {
 			throw new IndexOutOfBoundsException(Integer.toString(index));
 		}
 		Node<E> newNode = new Node<E>(value);
-		if (index == 0) {
+		if (head == null) {
 			head = new Node<E>(newNode);
 			size++;
 		} else {
@@ -123,6 +123,7 @@ public class SinglyLinkedList<E> {
 			node.next = newNode;
 			size++;
 		}
+
 	}
 
 	/**
@@ -144,16 +145,10 @@ public class SinglyLinkedList<E> {
 		if (index < 0 || index >= size) {
 			throw new IndexOutOfBoundsException(Integer.toString(index));
 		}
-		if (index == 0) {
-			Node<E> removedNode = getNode(index);
-			head.next = removedNode.next;
-			size--;
-		} else {
-			Node<E> node = getNode(index - 1);
-			Node<E> removedNode = getNode(index);
-			node.next = removedNode.next;
-			size--;
-		}
+		Node<E> node = getNode(index - 1);
+		Node<E> removedNode = getNode(index);
+		node.next = removedNode.next;
+		size--;
 	}
 
 	/**
